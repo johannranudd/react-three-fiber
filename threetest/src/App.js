@@ -1,12 +1,11 @@
-import './App.scss';
-import { Box } from '@chakra-ui/layout';
+import { Grid } from '@chakra-ui/layout';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
 function App() {
   return (
     <>
-      <Box w='50%' h='400' background='white'>
+      <Grid w='100%' h='100vh' background='white'>
         <Canvas>
           <OrbitControls />
           <mesh>
@@ -15,8 +14,14 @@ function App() {
             <directionalLight />
             <ambientLight />
           </mesh>
+          <mesh>
+            <boxBufferGeometry attach='geometry' args={[1, 1, 2]} />
+            <meshStandardMaterial color='blue' />
+            <directionalLight />
+            <ambientLight />
+          </mesh>
         </Canvas>
-      </Box>
+      </Grid>
     </>
   );
 }
