@@ -2,6 +2,8 @@ import { Grid } from '@chakra-ui/layout';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
+// testing in terminal
+
 function App() {
   return (
     <>
