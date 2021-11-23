@@ -5,12 +5,15 @@ import Sphere from './components/Sphere';
 import Cube from './components/Cube';
 import Plane from './components/Plane';
 import { Physics, useBox } from '@react-three/cannon';
+import { useRef } from 'react';
 
 function App() {
+  // const reference = useRef(null);
+
   return (
     <>
       <Grid w='100%' h='100vh'>
-        <Canvas>
+        <Canvas camera={{ position: [0, 10, 15] }}>
           {/* controls */}
           <OrbitControls />
           {/* lighting and camera */}
