@@ -6,7 +6,7 @@ const Plane = () => {
     rotation: [Math.PI * -0.5, 0, 0],
   }));
   return (
-    <mesh position={[0, 0, 0]} rotation={[Math.PI * -0.5, 0, 0]}>
+    <mesh position={[0, -1, 0]} rotation={[Math.PI * -0.5, 0, 0]}>
       <planeBufferGeometry attach='geometry' args={[100, 100]} />
       <meshLambertMaterial attach='material' color='lightblue' />
     </mesh>
