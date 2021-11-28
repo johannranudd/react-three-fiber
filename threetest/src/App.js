@@ -1,5 +1,5 @@
 import { Grid } from '@chakra-ui/layout';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import {
   OrbitControls,
   Stars,
@@ -11,25 +11,37 @@ import Cube from './components/Cube';
 // import Plane from './components/Plane';
 import { Physics } from '@react-three/cannon';
 import SkyBox from './components/SkyBox';
-// import { useRef } from 'react';
+import React, { useRef } from 'react';
 
-// softShadows({
-//   // frustum: 3.75,
-//   // size: 0.0005,
-//   // near: 9.5,
-//   // samples: 17,
-//   // rings: 11,
-// });
+extend({ OrbitControls });
+
+const CameraControls = () => {
+  const {
+    camera,
+    gl: { domElement },
+  } = useThree();
+
+  const controls = useRef();
+
+  useFrame(() => controls.current.update());
+  return (
+    <OrbitControls
+      ref={controls}
+      args={[camera, domElement]}
+      autoRotate={true}
+      enableZoom={false}
+      autoRotateSpeed={0.7}
+    />
+  );
+};
+
 function App() {
   return (
     <>
-      <Canvas
-        shadows
-        colorManagement
-        camera={{ position: [0, 5, 15], fov: 50 }}
-      >
+      <Canvas shadows colorManagement camera={{ position: [0, 0, 0], fov: 30 }}>
         {/* controls */}
-        <OrbitControls />
+        {/* <OrbitControls /> */}
+        <CameraControls />
         {/* <TrackballControls /> */}
         {/* lighting and camera */}
         {/* <spotLight castShadow position={[10, 15, 10]} angle={0.3} /> */}
